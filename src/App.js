@@ -9,11 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       loading: true,
-      userLocation:{
-        
-      },
-      activeMarker:{},
-      showingInfoWindow: false,
+      userLocation:{},
       isShowModal: false,
       name: "Md. Rashadul Islam"
     };
@@ -37,25 +33,20 @@ class App extends Component {
   onMarkerClick = (props, marker, e) =>{
     this.setState({
       userLocation: { lat:  marker.position.lat(), lng:  marker.position.lng() },
-      showingInfoWindow: true,
       isShowModal: true
     });
   }
    
   onClose = props => {
-    if (this.state.showingInfoWindow) {
       this.setState({
-        isShowModal: false,
-        activeMarker: null,
+        isShowModal: false
       });
-    }
   };
   handleClose(userLocation, name) {
     console.log("Name: ", name);
     console.log("Location: (",userLocation.lat + ",",userLocation.lng,")");
     this.setState({
-      isShowModal: false,
-      activeMarker: null,
+      isShowModal: false
     })
   }
   handleChange(event) {
@@ -83,7 +74,7 @@ class App extends Component {
               <Modal.Body>
                 <Form className="form">
                   <Form.Group as={Row} controlId="formHorizontalCoordinate">
-                    <Form.Label row sm={4} className="form-label">
+                    <Form.Label sm={4} className="form-label">
                          Location
                     </Form.Label>
                     <Col sm={8}>
@@ -91,7 +82,7 @@ class App extends Component {
                     </Col>
                   </Form.Group> 
                   <Form.Group as={Row} controlId="formHorizontalName">
-                    <Form.Label row sm={4} className="form-label">
+                    <Form.Label sm={4} className="form-label">
                       Name  
                     </Form.Label>
                     <Col sm={8}>
